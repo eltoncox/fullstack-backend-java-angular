@@ -37,7 +37,6 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
                 .oauth2ResourceServer().opaqueToken();
     }
 
-
     @Bean
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {

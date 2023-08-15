@@ -26,24 +26,17 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("angular")
-                .secret(passwordEncoder.encode("@ngul@r0")) // @ngul@r0
-                .scopes("read", "write")
-                .authorizedGrantTypes("password")
-                .accessTokenValiditySeconds(1800)
-                .and()
-                .withClient("mobile")
+                .withClient("angular").secret(passwordEncoder.encode("@ngul@r0")) // @ngul@r0
+                .scopes("read", "write").authorizedGrantTypes("password")
+                .accessTokenValiditySeconds(1800).and().withClient("mobile")
                 .secret(passwordEncoder.encode("m0b1l30")) // m0b1l30
-                .scopes("read")
-                .authorizedGrantTypes("password")
-                .accessTokenValiditySeconds(1800);
+                .scopes("read").authorizedGrantTypes("password").accessTokenValiditySeconds(1800);
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
-                .authenticationManager(authenticationManager)
-                .tokenStore(tokenStore());
+                .authenticationManager(authenticationManager).tokenStore(tokenStore());
     }
 
     @Override
@@ -55,6 +48,5 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public TokenStore tokenStore() {
         return new InMemoryTokenStore();
     }
-
-
 }
+
